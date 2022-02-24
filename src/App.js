@@ -96,7 +96,15 @@ function App() {
     }
 
     setEditFormData(formValues)
-  }
+  };
+
+  const handleCancelClick = () => {
+    setEditContactId(null); 
+  };
+
+  const handleDeleteClick = (contactId) => {
+    const newContacts = [...contacts];
+  };
 
   return (
     <div className="app-container">
@@ -115,7 +123,8 @@ function App() {
              {editContactId === contact.id ? 
              ( <EditableRow 
               editFormData={editFormData} 
-              handleEditFormChange={handleEditFormChange}/> ) : 
+              handleEditFormChange={handleEditFormChange}
+              handleCancelClick={handleCancelClick}/> ) : 
              ( <ReadOnlyRow contact={contact} 
              handleEditClick={handleEditClick}/> )
              }  
