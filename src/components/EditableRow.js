@@ -29,7 +29,7 @@ const EditableRow = () => {
             </td>
             <td>
                 <input
-                    type="text"
+                    type="email"
                     required="required"
                     placeholder="Please enter an email..."
                     name="email"

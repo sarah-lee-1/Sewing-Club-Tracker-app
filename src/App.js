@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, Fragment } from "react";
 import { nanoid } from 'nanoid';
 import "./App.css"; 
 import data from "./mock-data.json";
 import ReadOnlyRow from "./components/ReadOnlyRow";
+import EditableRow from "./components/EditableRow";
 
 function App() {
   const [contacts, setContacts] = useState(data);
@@ -11,7 +12,9 @@ function App() {
     address: '',
     phoneNumber: '',
     email: ''
-  })
+  });
+
+  const [editContactId, setEditContactId] = useState(null); 
 // Event handler add new values to form (add new imput, add new property to the initial state & call event handler)
   const handleAddFormChange = (event) => {
     event.preventDefault();
@@ -38,26 +41,38 @@ function App() {
 
     const newContacts = [...contacts, newContact];
     setContacts(newContacts);
+  };
 
+  const handleEditClick = (event, contact) => {
+    event.preventDefault();
+    setEditContactId(contact.id)
   }
 
   return (
     <div className="app-container">
+      <form>
      <table>
        <thead>
          <tr>Name</tr>
          <tr>Address</tr>
          <tr>Phone Number</tr>
          <tr>Email</tr>
-         <tr></tr>
+         <tr>Actions</tr>
        </thead>
        <body>
          {contacts.map((contact) => (
-           <ReadOnlyRow contact={contact} />
-
+           <Fragment>
+             {editContactId === contact.id ? 
+             ( <EditableRow/> ) : 
+             ( <ReadOnlyRow contact={contact} 
+             handleEditClick={handleEditClick}/> )
+             }  
+           </Fragment> 
          ))}
        </body>
      </table>
+     </form>
+
           <h2>Add a Contact</h2>
           <form onSubmit={handleAddFormSubmit}>
             <input 
