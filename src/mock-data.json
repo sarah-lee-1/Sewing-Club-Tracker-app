@@ -1,0 +1,42 @@
+[
+    {
+        "id": 1,
+        "name": "Sally Smith",
+        "address": "123 N Lake Dr",
+        "phoneNumber": "333-962-7516",
+        "email": "sallysmith@aol.com"
+    },
+
+    {
+        "id": 2,
+        "name": "Jenny Jones",
+        "address": "124 N Lake de",
+        "phoneNumber": "124 N Lake de",
+        "email": "555-555-1234"
+    },
+
+    {
+        "id": 3,
+        "name": "Molly Matthews",
+        "address": "125 N Lake Dr",
+        "phoneNumber": "555-962-7516",
+        "email": "sysmith@aol.com"
+    },
+
+    {
+        "id": 4,
+        "name": "Missy Maverick",
+        "address": "126 N Lake Dr",
+        "phoneNumber": "333-962-7516",
+        "email": "sallyth@aol.com" 
+    },
+
+    {
+        "id": 5,
+        "name": "Cindy Lou Who",
+        "address": "128 N Lake Dr",
+        "phoneNumber": "333-555-7516",
+        "email": "c-who@aol.com"
+    }
+
+]
