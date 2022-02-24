@@ -14,6 +14,13 @@ function App() {
     email: ''
   });
 
+  const [editFormData, setEditFormData] = useState({
+    fullName: '',
+    address: '',
+    phoneNumber: '',
+    email: ''
+  })
+
   const [editContactId, setEditContactId] = useState(null); 
 // Event handler add new values to form (add new imput, add new property to the initial state & call event handler)
   const handleAddFormChange = (event) => {
@@ -27,6 +34,18 @@ function App() {
 
     setAddFormData(newFormData); 
   };
+
+  const handleEditFormChange = (event) => {
+    event.preventDefault(); 
+
+    const fieldName = event.target.getAttribute('name');
+    const fieldValue = event.target.value;
+
+    const newFormData = { ...editFormData }; 
+    newFormData[fieldName] = fieldValue; 
+
+    setEditFormData(newFormData);
+  }
 // function gets called when form is submitted
   const handleAddFormSubmit = (event) => {
     event.preventDefault();
@@ -46,6 +65,15 @@ function App() {
   const handleEditClick = (event, contact) => {
     event.preventDefault();
     setEditContactId(contact.id)
+
+    const formValues = {
+      fullName: contact.fullName, 
+      address: contact.address,
+      phoneNumber: contact.phoneNumber,
+      email: contact.email, 
+    }
+
+    setEditFormData(formValues)
   }
 
   return (
@@ -63,7 +91,9 @@ function App() {
          {contacts.map((contact) => (
            <Fragment>
              {editContactId === contact.id ? 
-             ( <EditableRow/> ) : 
+             ( <EditableRow 
+              editFormData={editFormData} 
+              handleEditFormChange={handleEditFormChange}/> ) : 
              ( <ReadOnlyRow contact={contact} 
              handleEditClick={handleEditClick}/> )
              }  
