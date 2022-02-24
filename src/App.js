@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { nanoid } from 'nanoid';
 import "./App.css"; 
 import data from "./mock-data.json"
 
@@ -10,7 +11,7 @@ function App() {
     phoneNumber: '',
     email: ''
   })
-
+// Event handler add new values to form (add new imput, add new property to the initial state & call event handler)
   const handleAddFormChange = (event) => {
     event.preventDefault();
 
@@ -22,6 +23,22 @@ function App() {
 
     setAddFormData(newFormData); 
   };
+// function gets called when form is submitted
+  const handleAddFormSubmit = (event) => {
+    event.preventDefault();
+
+    const newContact = {
+      id: nanoid(),
+      fullName: addFormData.fullName,
+      address: addFormData.address,
+      phoneNumber: addFormData.phoneNumber,
+      email: addFormData.email,
+    };
+
+    const newContacts = [...contacts, newContact];
+    setContacts(newContacts);
+
+  }
 
   return (
     <div className="app-container">
@@ -46,7 +63,7 @@ function App() {
        </body>
      </table>
           <h2>Add a Contact</h2>
-          <form>
+          <form onSubmit={handleAddFormSubmit}>
             <input 
             type="text" 
             name="fullName" 
