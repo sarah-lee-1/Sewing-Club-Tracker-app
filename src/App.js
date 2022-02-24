@@ -66,27 +66,27 @@ function App() {
             required="required" 
             placeholder="Enter a name..."
             onChange={handleAddFormChange}
-            />
+            ></input>
             <input 
             type="text" 
             name="address" 
             required="required" placeholder="Enter an address..."
             onChange={handleAddFormChange}
-            />
+            ></input>
             <input 
             type="text" 
             name="phoneNumber" 
             required="required" 
             placeholder="Enter a phone number..."
             onChange={handleAddFormChange}
-            />
+            ></input>
             <input 
             type="email" 
             name="email" 
             required="required" 
             placeholder="Enter an email..."
             onChange={handleAddFormChange}
-            />
+            ></input>
             <button typ="submit">Add</button>
           </form>
     </div>
