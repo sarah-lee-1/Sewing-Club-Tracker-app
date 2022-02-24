@@ -11,6 +11,18 @@ function App() {
     email: ''
   })
 
+  const handleAddFormChange = (event) => {
+    event.preventDefault();
+
+    const fieldName = event.target.getAttribute('name');
+    const fieldValue = event.target.value; 
+
+    const newFormData = { ...AddFormData};
+    newFormData[fieldName] = fieldValue;
+
+    setAddFormData(newFormData); 
+  };
+
   return (
     <div className="app-container">
      <table>
@@ -35,10 +47,33 @@ function App() {
      </table>
           <h2>Add a Contact</h2>
           <form>
-            <input type="text" name="fullName" required="required" placeholder="Enter a name..."/>
-            <input type="text" name="address" required="required" placeholder="Enter an address..."/>
-            <input type="text" name="phoneNumber" required="required" placeholder="Enter a phone number..."/>
-            <input type="email" name="email" required="required" placeholder="Enter an email..."/>
+            <input 
+            type="text" 
+            name="fullName" 
+            required="required" 
+            placeholder="Enter a name..."
+            onChange={handleAddFormChange}
+            />
+            <input 
+            type="text" 
+            name="address" 
+            required="required" placeholder="Enter an address..."
+            onChange={handleAddFormChange}
+            />
+            <input 
+            type="text" 
+            name="phoneNumber" 
+            required="required" 
+            placeholder="Enter a phone number..."
+            onChange={handleAddFormChange}
+            />
+            <input 
+            type="email" 
+            name="email" 
+            required="required" 
+            placeholder="Enter an email..."
+            onChange={handleAddFormChange}
+            />
             <button typ="submit">Add</button>
           </form>
     </div>
