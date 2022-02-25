@@ -7,7 +7,7 @@ import EditableRow from "./components/EditableRow";
 
 function App() {
   const [contacts, setContacts] = useState(data);
-  const [addFormData, setFormData] = useState({
+  const [addFormData, setAddFormData] = useState({
     fullName: '',
     address: '',
     phoneNumber: '',
@@ -19,7 +19,7 @@ function App() {
     address: '',
     phoneNumber: '',
     email: ''
-  })
+  });
 
   const [editContactId, setEditContactId] = useState(null); 
 // Event handler add new values to form (add new imput, add new property to the initial state & call event handler)
@@ -71,7 +71,7 @@ function App() {
       address: editFormData.address,
       phoneNumber: editFormData.phoneNumber,
       email: editFormData.email
-    }
+    };
 
     const newContacts = [...contacts]; 
 
@@ -93,7 +93,7 @@ function App() {
       address: contact.address,
       phoneNumber: contact.phoneNumber,
       email: contact.email, 
-    }
+    };
 
     setEditFormData(formValues)
   };
@@ -115,34 +115,33 @@ function App() {
   return (
     <div className="app-container">
       <form onSubmit={handleEditFormSubmit}>
-     <table>
-       <thead>
-         <tr>Name</tr>
-         <tr>Address</tr>
-         <tr>Phone Number</tr>
-         <tr>Email</tr>
-         <tr>Actions</tr>
-       </thead>
-       <body>
-         {contacts.map((contact) => (
-           <Fragment>
-             {editContactId === contact.id ? 
-             ( <EditableRow 
-              editFormData={editFormData} 
-              handleEditFormChange={handleEditFormChange}
-              handleCancelClick={handleCancelClick}/> ) : 
-             ( <ReadOnlyRow 
-              contact={contact} 
-              handleEditClick={handleEditClick}
-              handleDeleteClick={handleDeleteClick}
-             /> 
-             )}  
-           </Fragment> 
-         ))}
-       </body>
-     </table>
+        <table>
+          <thead>
+            <tr>Name</tr>
+            <tr>Address</tr>
+            <tr>Phone Number</tr>
+            <tr>Email</tr>
+            <tr>Actions</tr>
+          </thead>
+          <body>
+            {contacts.map((contact) => (
+              <Fragment>
+                {editContactId === contact.id ? 
+                ( <EditableRow 
+                  editFormData={editFormData} 
+                  handleEditFormChange={handleEditFormChange}
+                  handleCancelClick={handleCancelClick}/> ) : 
+                ( <ReadOnlyRow 
+                  contact={contact} 
+                  handleEditClick={handleEditClick}
+                  handleDeleteClick={handleDeleteClick}
+                /> 
+                )}  
+              </Fragment> 
+            ))}
+          </body>
+        </table>
      </form>
-
           <h2>Add a Contact</h2>
           <form onSubmit={handleAddFormSubmit}>
             <input 
@@ -172,7 +171,7 @@ function App() {
             placeholder="Enter an email..."
             onChange={handleAddFormChange}
             ></input>
-            <button typ="submit">Add</button>
+            <button type="submit">Add</button>
           </form>
     </div>
   );
